@@ -72,6 +72,27 @@
         </plugins>
       </build>
     </profile>
+    <profile>
+      <id>clojure-console</id>
+      <activation>
+        <property>
+          <name>ClojureConsole</name>
+        </property>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>exec-maven-plugin</artifactId>
+            <version>1.2.1</version>
+            <configuration>
+              <executable>java</executable>
+              <mainClass>org.ggp.base.apps.consoles.ClojureConsole</mainClass>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
   </profiles>
 
   <build>
