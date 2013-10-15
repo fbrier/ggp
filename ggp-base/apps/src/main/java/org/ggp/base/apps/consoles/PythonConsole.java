@@ -1,5 +1,10 @@
 package org.ggp.base.apps.consoles;
 
+import java.io.File;
+import java.net.URISyntaxException;
+import java.net.URL;
+import org.python.core.PyString;
+import org.python.core.PySystemState;
 import org.python.util.PythonInterpreter;
 
 /**
@@ -27,9 +32,25 @@ import org.python.util.PythonInterpreter;
  */
 public class PythonConsole {
     public static void main(String[] args) {
-        PythonInterpreter interpreter = new PythonInterpreter();
+        PythonInterpreter interpreter = new PythonInterpreter( null, new PySystemState() );
+        PySystemState sysState = interpreter.getSystemState();
+        URL url = ClassLoader.getSystemClassLoader().getResource( "scripts.py" );
+        if ( null == url )
+            throw new RuntimeException( "Could not find scripts.py" );
+
+        File file = null;
+        try
+        {
+            file = new File( url.toURI() );
+            sysState.path.append( new PyString( file.getParent() ) );
+        }
+        catch ( URISyntaxException e )
+        {
+            throw new RuntimeException( e );
+        }
+
         interpreter.exec("from scripts import *");
-        interpreter.exec("import external.JythonConsole.console");
-        interpreter.exec("external.JythonConsole.console.main(locals())");
+        interpreter.exec("import console");
+        interpreter.exec("console.main(locals())");
     }
 }

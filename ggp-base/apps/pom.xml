@@ -38,5 +38,80 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+
+<!--
+    <dependency>
+      <groupId>com.google.code</groupId>
+      <artifactId>jythonconsole</artifactId>
+      <version>0.0.7</version>
+      <type>zip</type>
+      <scope>runtime</scope>
+    </dependency>
+-->
   </dependencies>
+
+  <profiles>
+    <profile>
+      <id>python-console</id>
+      <activation>
+        <property>
+          <name>PythonConsole</name>
+        </property>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>exec-maven-plugin</artifactId>
+            <version>1.2.1</version>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>java</goal>
+                </goals>
+              </execution>
+            </executions>
+            <configuration>
+              <executable>java</executable>
+              <mainClass>org.ggp.base.apps.consoles.PythonConsole</mainClass>
+              <includeProjectDependencies>true</includeProjectDependencies>
+              <classpathScope>runtime</classpathScope>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>2.8</version>
+        <executions>
+          <execution>
+            <id>unpack</id>
+            <goals>
+              <goal>unpack</goal>
+            </goals>
+            <phase>process-classes</phase>
+            <configuration>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>com.google.code</groupId>
+                  <artifactId>jythonconsole</artifactId>
+                  <version>0.0.7</version>
+                  <type>zip</type>
+                </artifactItem>
+              </artifactItems>
+              <includes>**/*.py</includes>
+              <outputDirectory>${project.build.directory}/classes</outputDirectory>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
 </project>
