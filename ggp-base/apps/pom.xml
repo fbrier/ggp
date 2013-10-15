@@ -64,18 +64,9 @@
             <groupId>org.codehaus.mojo</groupId>
             <artifactId>exec-maven-plugin</artifactId>
             <version>1.2.1</version>
-            <executions>
-              <execution>
-                <goals>
-                  <goal>java</goal>
-                </goals>
-              </execution>
-            </executions>
             <configuration>
               <executable>java</executable>
               <mainClass>org.ggp.base.apps.consoles.PythonConsole</mainClass>
-              <includeProjectDependencies>true</includeProjectDependencies>
-              <classpathScope>runtime</classpathScope>
             </configuration>
           </plugin>
         </plugins>

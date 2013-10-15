@@ -34,7 +34,7 @@ public class PythonConsole {
     public static void main(String[] args) {
         PythonInterpreter interpreter = new PythonInterpreter( null, new PySystemState() );
         PySystemState sysState = interpreter.getSystemState();
-        URL url = ClassLoader.getSystemClassLoader().getResource( "scripts.py" );
+        URL url = interpreter.getClass().getClassLoader().getResource( "scripts.py" );
         if ( null == url )
             throw new RuntimeException( "Could not find scripts.py" );
 
