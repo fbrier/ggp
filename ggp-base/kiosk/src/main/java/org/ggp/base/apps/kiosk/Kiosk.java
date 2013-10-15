@@ -10,6 +10,7 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
@@ -45,6 +46,7 @@ import org.ggp.base.util.observer.Observer;
 import org.ggp.base.util.reflection.ProjectSearcher;
 import org.ggp.base.util.symbol.grammar.SymbolPool;
 import org.ggp.base.util.ui.*;
+import org.reflections.Reflections;
 
 /**
  * Kiosk is a program for running two-player human-vs-computer matches
@@ -107,7 +109,9 @@ public final class Kiosk extends JPanel implements ActionListener, ItemListener,
         GamerLogger.setFileToDisplay("GamePlayer");
         
         SortedSet<AvailableGame> theAvailableGames = new TreeSet<AvailableGame>();
-        List<Class<?>> theAvailableCanvasList = ProjectSearcher.getAllClassesThatAre(GameCanvas.class);
+//        List<Class<?>> theAvailableCanvasList = ProjectSearcher.getAllClassesThatAre(GameCanvas.class);
+        Reflections reflections = new Reflections("org.ggp.base.apps");
+        Set<Class<? extends GameCanvas>> theAvailableCanvasList = reflections.getSubTypesOf(GameCanvas.class);
         for(Class<?> availableCanvas : theAvailableCanvasList) {
             try {
                 GameCanvas theCanvas = (GameCanvas) availableCanvas.newInstance();                
