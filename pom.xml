@@ -12,10 +12,6 @@
     <module>player</module>
     <module>server</module>
     <module>kiosk</module>
-    <!--
-        <module>consoles</module>
-        <module>clojuregamer</module>
-    -->
     <module>apps</module>
   </modules>
   <build>

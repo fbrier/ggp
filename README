@@ -55,3 +55,46 @@ RandomGamer always chooses a random legal move.
 * This project is licensed under the New BSD License. Licensing information for
   the project can be found in the licenses/LICENSE file. Licensing information
   for the included external libraries can be found in the licenses/ directory.
+
+                              === BUILD NOTES ===
+
+You will need to have Maven installed.  It can be found at:
+
+http://maven.apache.org/index.html
+
+If you are running Linux, you may choose to install a package.
+
+Next we need to install the jythonconsole into your local Maven repository.
+
+1) Download the jythonconsole from https://code.google.com/p/jythonconsole/downloads/list
+
+2) Unfortunately, the zip file entries have a directory specified with the version number "jythonconsole-0.0.7", so we need
+to unpack it and rezip it from that directory, so that the directory entry is no longer in the archive.
+
+3) We then install the newly created archive into our local repo with the following command:
+
+mvn install:install-file -Dfile=jythonconsole-0.0.7.zip -DgroupId=com.google.code -DartifactId=jythonconsole -Dversion=0.0.7 -Dpackaging=zip
+
+At this point you can perform the normal maven build command to build the artifacts and install them in your local repo.
+
+mvn clean install
+
+                       === MAVEN COMMANDS FOR APPS ===
+
+Invoking the different applications:
+
+Server:
+cd apps
+mvn -X exec:java -Pserver
+
+Clojure Console:
+cd apps
+mvn -X exec:java -Pclojure-console
+
+Python Console:
+cd apps
+mvn -X exec:java -Ppython-console
+
+Kiosk:
+cd kiosk
+mvn -X exec:java
