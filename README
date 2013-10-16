@@ -79,6 +79,17 @@ At this point you can perform the normal maven build command to build the artifa
 
 mvn clean install
 
+To generate an aggregate Javadoc for all the modules, you can use either of the following commands:
+
+mvn javadoc:aggregate
+
+or to build and generate the javadoc:
+
+mvn clean install javadoc:aggregate
+
+The index page of your javadoc will be ./ggp/target/site/apidocs/index.html
+
+
                        === MAVEN COMMANDS FOR APPS ===
 
 Invoking the different applications:
