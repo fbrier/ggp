@@ -98,3 +98,12 @@ mvn -X exec:java -Ppython-console
 Kiosk:
 cd kiosk
 mvn -X exec:java
+
+                           === HISTORY ===
+
+This repository was cloned from Sam Schreiber project at https://code.google.com/p/ggp-base/
+
+The licenses were copied from that site into the LICENSE file.
+
+Since the source files locations were radically changed, the Eclipse project files were removed.  Maven has instructions
+for using Eclipse with an existing Maven project: http://maven.apache.org/guides/mini/guide-ide-eclipse.html
