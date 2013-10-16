@@ -93,6 +93,27 @@
         </plugins>
       </build>
     </profile>
+    <profile>
+      <id>server</id>
+      <activation>
+        <property>
+          <name>Server</name>
+        </property>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>exec-maven-plugin</artifactId>
+            <version>1.2.1</version>
+            <configuration>
+              <executable>java</executable>
+              <mainClass>org.ggp.base.apps.server.Server</mainClass>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
   </profiles>
 
   <build>

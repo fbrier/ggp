@@ -66,29 +66,5 @@
         </plugins>
       </build>
     </profile>
-    <profile>
-      <id>server-panel</id>
-      <activation>
-        <property>
-          <name>ServerPanel</name>
-        </property>
-      </activation>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.codehaus.mojo</groupId>
-            <artifactId>exec-maven-plugin</artifactId>
-            <configuration>
-              <executable>java</executable>
-              <arguments>
-                <argument>-classpath</argument>
-                <classpath/>
-                <argument>org.ggp.base.apps.server.ServerPanel</argument>
-              </arguments>
-            </configuration>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
   </profiles>
 </project>
