@@ -31,12 +31,32 @@ import org.python.util.PythonInterpreter;
  * @author Sam
  * @author evancox
  */
-public abstract class PythonGamer extends Gamer
+public class PythonGamer extends Gamer
 {
-    Gamer thePythonGamer;
-    
-    protected abstract String getPythonGamerName();
-    protected abstract String getPythonGamerModule();        
+    private Gamer thePythonGamer;
+
+    private String pythonGamerModule;    // "sample_gamer"
+    private String pythonGamerName;      // "SamplePythonGamer"
+
+    public String getPythonGamerModule()
+    {
+        return pythonGamerModule;
+    }
+
+    public void setPythonGamerModule( String pythonGamerModule )
+    {
+        this.pythonGamerModule = pythonGamerModule;
+    }
+
+    public String getPythonGamerName()
+    {
+        return pythonGamerName;
+    }
+
+    public void setPythonGamerName( String pythonGamerName )
+    {
+        this.pythonGamerName = pythonGamerName;
+    }
 
     // Gamer stubs are lazily loaded because the Python interface takes
     // time to initialize, so we only want to load it when necessary, and

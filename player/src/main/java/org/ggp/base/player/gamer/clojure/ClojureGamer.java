@@ -31,13 +31,34 @@ import clojure.lang.Var;
  * 
  * @author Sam Schreiber
  */
-public abstract class ClojureGamer extends Gamer
+public class ClojureGamer extends Gamer
 {
-    Gamer theClojureGamer;
+    private Gamer theClojureGamer;
 
-    protected abstract String getClojureGamerFile();
-    protected abstract String getClojureGamerName();    
-    
+    private String clojureGamerFile;
+
+    private String clojureGamerName;
+
+    public String getClojureGamerFile()
+    {
+        return clojureGamerFile;
+    }
+
+    public void setClojureGamerFile( String clojureGamerFile )
+    {
+        this.clojureGamerFile = clojureGamerFile;
+    }
+
+    public String getClojureGamerName()
+    {
+        return clojureGamerName;
+    }
+
+    public void setClojureGamerName( String clojureGamerName )
+    {
+        this.clojureGamerName = clojureGamerName;
+    }
+
     // Gamer stubs are lazily loaded because the Clojure interface takes
     // time to initialize, so we only want to load it when necessary, and
     // not for light-weight things like returning the player name.

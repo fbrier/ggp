@@ -1,7 +1,5 @@
 package org.ggp.base.player.gamer.clojure;
 
-import org.ggp.base.player.gamer.Gamer;
-import org.ggp.base.player.gamer.clojure.stubs.SampleClojureGamerStub;
 import org.ggp.base.util.game.GameRepository;
 import org.ggp.base.util.gdl.grammar.GdlPool;
 import org.ggp.base.util.match.Match;
@@ -17,7 +15,10 @@ import junit.framework.TestCase;
 public class ClojureGamer_Test extends TestCase {	
     public void testClojureGamer() {
         try {
-            Gamer g = new SampleClojureGamerStub();
+            ClojureGamer g = new ClojureGamer();
+            g.setClojureGamerFile( "sample_gamer" );
+            g.setClojureGamerName( "SampleClojureGamer" );
+
             assertEquals("SampleClojureGamer", g.getName());
 
             Match m = new Match("", -1, 1000, 1000, GameRepository.getDefaultRepository().getGame("ticTacToe"));
