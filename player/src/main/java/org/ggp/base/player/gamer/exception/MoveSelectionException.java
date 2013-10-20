@@ -10,7 +10,7 @@ public final class MoveSelectionException extends Exception
 	@Override
 	public String toString()
 	{
-		return "An unhandled exception ocurred during move selection: " + super.toString();
+		return "An unhandled exception occurred during move selection: " + super.toString();
 	}
 
 }

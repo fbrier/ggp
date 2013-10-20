@@ -10,7 +10,7 @@ public final class AbortingException extends Exception
 	@Override
 	public String toString()
 	{
-		return "An unhandled exception ocurred during aborting: " + super.toString();
+		return "An unhandled exception occurred during aborting: " + super.toString();
 	}
 
 }

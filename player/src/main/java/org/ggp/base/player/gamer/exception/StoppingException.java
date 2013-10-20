@@ -10,7 +10,7 @@ public final class StoppingException extends Exception
 	@Override
 	public String toString()
 	{
-		return "An unhandled exception ocurred during stopping: " + super.toString();
+		return "An unhandled exception occurred during stopping: " + super.toString();
 	}
 
 }
