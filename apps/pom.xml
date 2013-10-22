@@ -39,15 +39,6 @@
       <scope>test</scope>
     </dependency>
 
-<!--
-    <dependency>
-      <groupId>com.google.code</groupId>
-      <artifactId>jythonconsole</artifactId>
-      <version>0.0.7</version>
-      <type>zip</type>
-      <scope>runtime</scope>
-    </dependency>
--->
   </dependencies>
 
   <profiles>
