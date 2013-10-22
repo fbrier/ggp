@@ -5,19 +5,19 @@
 
 (ns gamer_namespace)
 
-(defn SampleClojureGamer []
+(defn ClojureLegalGamer []
   (proxy [org.ggp.base.player.gamer.statemachine.StateMachineGamer] []
     (getInitialStateMachine []
       (new org.ggp.base.util.statemachine.implementation.prover.ProverStateMachine))
 
     (stateMachineSelectMove [timeout]
-      (.
-        (. this (getStateMachine) [])
-        (getRandomMove
-          (. this (getCurrentState) [])
-          (. this (getRole) [])
+        (first (. (. this (getStateMachine) [])
+            (getLegalMoves
+              (. this (getCurrentState) [])
+              (. this (getRole) [])
+            )
+          )
         )
-      )
     )
     
     (stateMachineMetaGame [timeout] ())

@@ -1,8 +1,10 @@
 package org.ggp.base.player.gamer;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.ggp.base.player.gamer.exception.InitializationException;
 import org.ggp.base.util.player.config.ConfigPanel;
 import org.ggp.base.util.player.config.EmptyConfigPanel;
 import org.ggp.base.util.player.detail.DetailPanel;
