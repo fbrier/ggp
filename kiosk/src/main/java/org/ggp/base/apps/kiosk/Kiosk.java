@@ -110,7 +110,7 @@ public final class Kiosk extends JPanel implements ActionListener, ItemListener,
         
         SortedSet<AvailableGame> theAvailableGames = new TreeSet<AvailableGame>();
 //        List<Class<?>> theAvailableCanvasList = ProjectSearcher.getAllClassesThatAre(GameCanvas.class);
-        Reflections reflections = new Reflections("org.ggp.base.apps");
+        Reflections reflections = new Reflections( "" );
         Set<Class<? extends GameCanvas>> theAvailableCanvasList = reflections.getSubTypesOf(GameCanvas.class);
         for(Class<?> availableCanvas : theAvailableCanvasList) {
             try {
