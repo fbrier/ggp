@@ -1,17 +1,11 @@
 package org.ggp.base.apps.kiosk.templates;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.FontMetrics;
-import java.awt.Graphics;
-import java.awt.Image;
-import java.io.File;
+import javax.imageio.ImageIO;
+import javax.imageio.stream.FileCacheImageInputStream;
+
+import java.awt.*;
 import java.io.IOException;
 import java.util.Random;
-
-import javax.imageio.ImageIO;
-
-import org.ggp.base.util.configuration.ProjectConfiguration;
 
 
 public class CommonGraphics {
@@ -21,7 +15,9 @@ public class CommonGraphics {
 
     public static Image getImage(String dirName, String imageName) {                       
         try {
-            return ImageIO.read(new File(new File(ProjectConfiguration.gameImagesDirectory, dirName), imageName));
+            return ImageIO.read( new FileCacheImageInputStream(
+                    CommonGraphics.class.getClassLoader().getResourceAsStream( "images/" + dirName + "/" + imageName ),
+                    null ) );
         } catch (IOException e) {
             e.printStackTrace();
             return null;
