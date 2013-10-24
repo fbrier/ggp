@@ -39,8 +39,8 @@ public final class GamePlayer extends Thread implements Subject
             } catch (IOException ex) {
                 listener = null;
                 port++;
-                System.err.println("Failed to start gamer on port: " + (port-1) + " trying port " + port);
-            }				
+                System.err.println( "Failed to start gamer on port: " + ( port - 1 ) + " trying port " + port );
+            }
         }
         
         this.port = port;
@@ -94,10 +94,19 @@ public final class GamePlayer extends Thread implements Subject
 			}
 			catch (Exception e)
 			{
-				notifyObservers(new PlayerDroppedPacketEvent());
-			}
+				notifyObservers( new PlayerDroppedPacketEvent() );
+            }
 		}
 	}
+
+    /**
+     * Exit the listen/accept loop and exit the thread.
+     */
+    public void shutdown() throws IOException
+    {
+        interrupt();
+        listener.close();
+    }
 
 	// Simple main function that starts a RandomGamer on a specified port.
 	// It might make sense to factor this out into a separate app sometime,

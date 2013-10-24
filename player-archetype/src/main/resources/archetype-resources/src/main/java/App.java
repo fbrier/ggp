@@ -14,7 +14,7 @@ public class App
         SpringPlayerHelper player = new SpringPlayerHelper( args );
         if ( player.init() )
             player.start();
-        player.join();
-        System.out.println( "Exiting...");
+
+        player.waitForQuitKey();
     }
 }

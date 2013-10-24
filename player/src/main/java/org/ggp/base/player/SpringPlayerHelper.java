@@ -79,7 +79,8 @@ public class SpringPlayerHelper
         if ( null != gamer )
         {
             System.out.println( "Starting up pre-configured player on port " + port + " using player class named " + gamer.getName() );
-            new GamePlayer( port, gamer ).start();
+            gamePlayer = new GamePlayer( port, gamer );
+            gamePlayer.start();
         }
     }
 
@@ -94,6 +95,12 @@ public class SpringPlayerHelper
             {
                 logger.severe( e.toString() );
             }
+    }
+
+    public void shutdown() throws IOException
+    {
+        if ( null != gamePlayer )
+            gamePlayer.shutdown();
     }
 
     private boolean processCommandLine( String[] args ) throws ParseException
@@ -115,5 +122,14 @@ public class SpringPlayerHelper
         port = Integer.valueOf( cmd.getOptionValue( "p", String.valueOf( port ) ) );
         gameName = cmd.getOptionValue( "n" );
         return true;
+    }
+
+    public void waitForQuitKey() throws IOException
+    {
+        System.out.print( "Press <enter> to quit...");
+        System.in.read();
+        shutdown();
+        join();
+        System.out.println( "Exiting..." );
     }
 }
