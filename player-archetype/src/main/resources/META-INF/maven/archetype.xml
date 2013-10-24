@@ -1,0 +1,16 @@
+<archetype>
+  <id>player-archetype</id>
+  <sources>
+    <source>src/main/java/App.java</source>
+  </sources>
+  <resources>
+    <resource>src/main/clojure/clojure_gamer.clj</resource>
+    <resource>src/main/resources/application-context.xml</resource>
+    <resource>src/main/assembly/assembly.xml</resource>
+    <resource>src/main/scripts/run-gamer.sh</resource>
+    <resource>src/main/scripts/run-gamer.bat</resource>
+  </resources>
+  <testSources>
+    <source>src/test/java/AppTest.java</source>
+  </testSources>
+</archetype>

@@ -13,6 +13,7 @@
     <module>server</module>
     <module>kiosk</module>
     <module>apps</module>
+    <module>player-archetype</module>
   </modules>
   <build>
     <plugins>

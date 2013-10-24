@@ -110,6 +110,31 @@ Kiosk:
 cd kiosk
 mvn -X exec:java
 
+                       === MAVEN ARCHETYPE FOR RUNNING GAMERS ===
+
+This new approach allows separating your new Gamers and their code from the rest of the GGP project and libraries.  This
+will reduce build time as only your classes are being compiled.  Since the GGP modules are bundled up as separate .jars,
+only those that are needed, have to be deployed.
+
+mvn archetype:generate -DarchetypeGroupId=org.ggp.base -DarchetypeArtifactId=player-archetype -DarchetypeVersion=1.0-SNAPSHOT  -DgroupId=com.multideck.ggp -DartifactId=ggp-clojure -Dversion=1.0-SNAPSHOT
+
+Once you have generated your new project, you can add code to your gamer project and run it, even passing parameters,
+as described below.  These are the same as available from the DOS batch file and Unix shell script.
+
+mvn clean install exec:java -Dexec.args="-p 9149"
+
+You can even build a zip archive with all the dependent jars using the command:
+
+mvn clean install package
+
+Scripts are also included to run the gamer player.  The player and the shell scripts can optionally take two parameters
+-p (or --port) for port and -n for the name of the game to be played.  If only one game is defined in the gamerMap in
+the spring configuration file, then the name of the game can be omitted and it will default to that game.  You can also
+ask for "--help" to see these options.  For example, to run the gamer on port 9149, you would type:
+
+run-gamer -p 9149
+
+
                            === HISTORY ===
 
 This repository was cloned from Sam Schreiber project at https://code.google.com/p/ggp-base/

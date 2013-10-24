@@ -24,6 +24,7 @@ public class SpringPlayerHelper
     final static Logger logger = Logger.getLogger(SpringPlayerHelper.class.toString());
     private String[] args;
     private ApplicationContext applicationContext;
+    private GamePlayer gamePlayer = null;
     private int port = 9147;
     private Gamer gamer = null;
     private String gameName = null;
@@ -77,18 +78,30 @@ public class SpringPlayerHelper
     {
         if ( null != gamer )
         {
-            System.out.println("Starting up pre-configured player on port " + port + " using player class named " + gamer.getName() );
+            System.out.println( "Starting up pre-configured player on port " + port + " using player class named " + gamer.getName() );
             new GamePlayer( port, gamer ).start();
-            System.out.println("Player shutting down." );
         }
+    }
+
+    public void join()
+    {
+        if ( null != gamePlayer )
+            try
+            {
+                gamePlayer.join();
+            }
+            catch ( InterruptedException e )
+            {
+                logger.severe( e.toString() );
+            }
     }
 
     private boolean processCommandLine( String[] args ) throws ParseException
     {
         // Create Options object
         Options options = new Options();
-        options.addOption("p", "port", true, "Port number exposed for game server, defaults to ");
-        options.addOption("n", "name", true, "Name of the game to be run, defaults to 'gamer'");
+        options.addOption("p", "port", true, "Port number exposed for game server, defaults to " + port );
+        options.addOption("n", "name", true, "Name of the game to be run, defaults if only one game defined");
         options.addOption("help", false, "Displays this help.");
 
         CommandLineParser parser = new BasicParser();
@@ -96,7 +109,7 @@ public class SpringPlayerHelper
         if( cmd.hasOption( "help" ) )
         {
             HelpFormatter formatter = new HelpFormatter();
-            formatter.printHelp( "player", options );
+            formatter.printHelp( "run-gamer", options );
             return false;
         }
         port = Integer.valueOf( cmd.getOptionValue( "p", String.valueOf( port ) ) );
