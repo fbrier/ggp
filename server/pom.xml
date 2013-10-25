@@ -4,11 +4,11 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>org.ggp.base</groupId>
-    <artifactId>root</artifactId>
+    <artifactId>ggp-root</artifactId>
     <version>1.0-SNAPSHOT</version>
   </parent>
   <groupId>org.ggp.base</groupId>
-  <artifactId>server</artifactId>
+  <artifactId>ggp-server</artifactId>
   <version>1.0-SNAPSHOT</version>
   <name>server</name>
   <url>http://maven.apache.org</url>
@@ -18,7 +18,7 @@
   <dependencies>
     <dependency>
       <groupId>org.ggp.base</groupId>
-      <artifactId>util</artifactId>
+      <artifactId>ggp-util</artifactId>
       <version>1.0-SNAPSHOT</version>
     </dependency>
     <dependency>

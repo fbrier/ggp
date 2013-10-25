@@ -116,7 +116,7 @@ This new approach allows separating your new Gamers and their code from the rest
 will reduce build time as only your classes are being compiled.  Since the GGP modules are bundled up as separate .jars,
 only those that are needed, have to be deployed.
 
-mvn archetype:generate -DarchetypeGroupId=org.ggp.base -DarchetypeArtifactId=player-archetype -DarchetypeVersion=1.0-SNAPSHOT  -DgroupId=com.multideck.ggp -DartifactId=ggp-clojure -Dversion=1.0-SNAPSHOT
+mvn archetype:generate -DarchetypeGroupId=org.ggp.base -DarchetypeArtifactId=ggp-player-archetype -DarchetypeVersion=1.0-SNAPSHOT  -DgroupId=com.yourcompany.ggp -DartifactId=ggp-clojure -Dversion=1.0-SNAPSHOT
 
 Once you have generated your new project, you can add code to your gamer project and run it, even passing parameters,
 as described below.  These are the same as available from the DOS batch file and Unix shell script.
